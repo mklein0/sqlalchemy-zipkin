@@ -117,6 +117,14 @@ class SqlAlchemyZipkinInstrumentation(object):
         url = conn.engine.url
         url = sqa_URL(drivername=url.drivername, host=url.host, port=url.port, database=url.database, query=url.query)
 
+        lower_statement = statement.lower().strip().split(' ', 1)
+        operation = lower_statement[0].lower()
+
+        # TODO: Would be nice to lose data portion of statement only.
+        if operation in ('insert', 'update'):
+            statement = '<redacted>'
+            parameters = ()
+
         # Add SQLAlchemy attributes to span before stopping it. Noop is sampling is not set or 0
         span.update_binary_annotations_for_root_span({
             'sql.engine.id': id(conn.engine),
