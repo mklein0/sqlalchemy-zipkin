@@ -33,10 +33,11 @@ class SqlAlchemyZipkinInstrumentation(object):
 
     INFO_ZIPKIN_SPAN = 'zipkin_span'
 
-    def __init__(self, transport_handler, sample_rate=100.0):
+    def __init__(self, transport_handler, sample_rate=100.0, max_length=4096):
         # type: (typing.Callable[[bytes], None], float) -> None
         self.sample_rate = sample_rate
         self.transport_handler = transport_handler
+        self.max_length = max_length
         self.started = False
 
     def start(self):
@@ -129,7 +130,7 @@ class SqlAlchemyZipkinInstrumentation(object):
         span.update_binary_annotations_for_root_span({
             'sql.engine.id': id(conn.engine),
             'sql.engine.url': str(url),
-            'sql.statement': statement,
+            'sql.statement': statement[:self.max_length],
             'sql.parameters': parameters,
         })
 
