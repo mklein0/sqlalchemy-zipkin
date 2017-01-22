@@ -42,7 +42,7 @@ setup(
     classifiers=[
         'Programming Language :: Python',
     ],
-    packages=find_packages(),
+    py_modules=['sqlalchemy_zipkin'],
     zip_safe=False,
     platforms='any',
     install_requires=[
