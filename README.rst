@@ -11,7 +11,7 @@ Installation
 
 .. code-block:: bash
 
-  pip install 'git+https://github.com/mklein0/sqlalchemy-zipkin.git#egg=SQLAlchemy_Zipkin'
+  pip install SQLAlchemy-Zipkin
 
 
 *****
