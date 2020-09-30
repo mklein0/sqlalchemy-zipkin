@@ -71,7 +71,7 @@ Usage with Kafka
 
 
    sqla_instance = sqlalchemy_zipkin.SqlAlchemyZipkinInstrumentation(
-       functools.partial(kafka_transport, 'zipkin', sample_rate=50.0)
+       functools.partial(kafka_transport, 'zipkin'), sample_rate=50.0)
    sqla_instance.start()
 
 *********
