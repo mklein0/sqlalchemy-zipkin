@@ -45,7 +45,7 @@ setup(
     py_modules=['sqlalchemy_zipkin'],
     platforms='any',
     install_requires=[
-        'py_zipkin>=0.4.0',
+        'py_zipkin>=0.7.0',
         'SQLAlchemy>=0.9.8',
     ],
 )
