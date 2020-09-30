@@ -127,7 +127,7 @@ class SqlAlchemyZipkinInstrumentation(object):
             parameters = ()
 
         # Add SQLAlchemy attributes to span before stopping it. Noop is sampling is not set or 0
-        span.update_binary_annotations_for_root_span({
+        span.update_binary_annotations({
             'sql.engine.id': id(conn.engine),
             'sql.engine.url': str(url),
             'sql.statement': statement[:self.max_length],
