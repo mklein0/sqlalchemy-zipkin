@@ -47,6 +47,32 @@ Usage
        http_transport, sample_rate=50.0)
    sqla_instance.start()
 
+*****
+Usage with Kafka
+*****
+
+.. code-block:: python
+
+  import functools
+  import sqlalchemy_zipkin
+  from kafka import KafkaProducer
+
+
+  def kafka_transport(stream_name, encoded_span):
+      # type: (string) -> None
+      # type: (bytes) -> None
+
+      try:
+          # If you use zipnkin kafka docker compose use port 19092
+          producer = KafkaProducer(bootstrap_servers='localhost:9092')
+          future = producer.send(stream_name, message)
+      except Exception as e:
+          print(str(e))
+
+
+   sqla_instance = sqlalchemy_zipkin.SqlAlchemyZipkinInstrumentation(
+       functools.partial(kafka_transport, 'zipkin'), sample_rate=50.0)
+   sqla_instance.start()
 
 *********
 Reference
