@@ -47,9 +47,9 @@ Usage
        http_transport, sample_rate=50.0)
    sqla_instance.start()
 
-*****
+****************
 Usage with Kafka
-*****
+****************
 
 .. code-block:: python
 
@@ -74,8 +74,3 @@ Usage with Kafka
        functools.partial(kafka_transport, 'zipkin'), sample_rate=50.0)
    sqla_instance.start()
 
-*********
-Reference
-*********
-
-  * http://documentation-style-guide-sphinx.readthedocs.io/en/latest/style-guide.html
