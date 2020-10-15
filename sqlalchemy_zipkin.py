@@ -137,4 +137,4 @@ class SqlAlchemyZipkinInstrumentation(object):
         span.stop()
 
 
-__version__ = '0.2.0'
+__version__ = '0.2.0+dev0'
